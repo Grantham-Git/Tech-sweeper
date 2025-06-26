@@ -21,5 +21,3 @@
 
 - **Operating System**: Windows 10/11  
 - **Python Version**: 3.8 or higher  
-- **Dependencies**:
-  ```bash
