@@ -23,4 +23,3 @@
 - **Python Version**: 3.8 or higher  
 - **Dependencies**:
   ```bash
-  pip install -r requirements.txt
