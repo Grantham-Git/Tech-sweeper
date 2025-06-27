@@ -1,1 +1,16 @@
-# Python ignore rules 
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+
+# Logs and reports
+logs/
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
