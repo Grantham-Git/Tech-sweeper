@@ -9,7 +9,7 @@ LOG_FILE = "logs/log.txt"
 
 def write_log(message):
     os.makedirs("logs", exist_ok=True)
-    with open(LOG_FILE, "a") as f:
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(f"{datetime.datetime.now()} - {message}\n")
 
 def print_and_log(message):
@@ -18,14 +18,15 @@ def print_and_log(message):
 
 def print_header():
     print_and_log("=" * 40)
-    print_and_log("🧹 Tech Sweeper System Report")
+    print_and_log("Tech Sweeper System Report")
     print_and_log("=" * 40)
+    print_and_log(f"Date & Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print_and_log(f"System: {platform.system()} {platform.release()}")
     print_and_log(f"Processor: {platform.processor()}")
     print_and_log("")
 
 def check_disk_usage():
-    print_and_log("💾 Disk Usage:")
+    print_and_log("Disk Usage:")
     total, used, free = shutil.disk_usage("C:/")
     print_and_log(f"  Total: {total // (2**30)} GB")
     print_and_log(f"  Used:  {used // (2**30)} GB")
@@ -33,7 +34,7 @@ def check_disk_usage():
     print_and_log("")
 
 def check_cpu_memory():
-    print_and_log("🧠 CPU & Memory:")
+    print_and_log("CPU & Memory:")
     cpu = psutil.cpu_percent(interval=1)
     memory = psutil.virtual_memory()
     print_and_log(f"  CPU Load:     {cpu}%")
@@ -47,7 +48,7 @@ def main():
     check_disk_usage()
     check_cpu_memory()
     clean_temp_folder(log_func=write_log)
-    print_and_log("✅ Scan complete. Your system looks squeaky clean!")
+    print_and_log("Scan complete. Your system looks clean and healthy.")
     write_log("=== Tech Sweeper finished ===\n")
 
 if __name__ == "__main__":

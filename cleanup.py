@@ -1,3 +1,5 @@
+# cleanup.py
+
 import os
 import tempfile
 
@@ -6,7 +8,7 @@ def clean_temp_folder(log_func=None):
     deleted = 0
     failed = 0
 
-    print("🗑️ Cleaning Temporary Files...")
+    print("Cleaning Temporary Files...")
     if log_func:
         log_func("Cleaning Temporary Files...")
 
@@ -19,15 +21,17 @@ def clean_temp_folder(log_func=None):
             elif os.path.isdir(file_path):
                 os.rmdir(file_path)  # removes empty folders only
                 deleted += 1
-        except Exception as e:
+        except Exception:
             failed += 1
             continue
 
-    msg = f"✅ Deleted {deleted} files/folders."
+    msg = f"Deleted {deleted} files/folders."
     print(msg)
-    if log_func: log_func(msg)
+    if log_func:
+        log_func(msg)
 
     if failed > 0:
-        warn = f"⚠️ Skipped {failed} items due to access restrictions."
+        warn = f"Skipped {failed} items due to access restrictions."
         print(warn)
-        if log_func: log_func(warn)
+        if log_func:
+            log_func(warn)
